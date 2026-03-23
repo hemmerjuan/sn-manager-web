@@ -599,7 +599,7 @@ async function runIdentify(b64, onP, fileName, existingProducts) {
   /* ── 第二階段：專屬引擎 + 學習範例注入 ── */
   onP(issuerData.name + " ✓ — 專屬引擎提取中" + (savedOneCall ? "（已省1次API）" : "") + "...");
   var enhancedPrompt = injectExamples(PROMPTS[pid], profile, pid);
-  var p = await apiCall(b64, enhancedPrompt, fileName, "提取");
+  var p = await apiCall(b64, enhancedPrompt, fileName, "提取", undefined);
   p.issuer = pid;
   p.confidence = identConfidence;
   p.createdAt = new Date().toISOString();
